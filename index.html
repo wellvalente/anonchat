@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Chat Anônimo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section id="home" class="screen">
+    <div class="card">
+      <h1>Chat Anônimo</h1>
+      <p class="subtitle">Sem cadastro. Escolha um apelido e entre.</p>
+
+      <form id="home-form" novalidate>
+        <label for="nickname">Apelido</label>
+        <input id="nickname" maxlength="20" autocomplete="off" placeholder="Como quer ser chamado?">
+
+        <label for="code">Código do chat</label>
+        <input id="code" inputmode="numeric" maxlength="5" autocomplete="off" placeholder="00000">
+
+        <button type="submit">Entrar no chat</button>
+        <div class="divider"><span>ou</span></div>
+        <button type="button" id="create-btn" class="secondary">Criar novo chat</button>
+
+        <p id="home-error" class="error" hidden></p>
+      </form>
+    </div>
+  </section>
+
+  <section id="chat" class="screen" hidden>
+    <header class="chat-header">
+      <div class="room-info">
+        <div class="room-label">
+          Chat <strong id="room-code"></strong>
+          <button type="button" id="copy-btn" class="link">copiar link</button>
+        </div>
+        <div id="members" class="members"></div>
+      </div>
+      <button type="button" id="leave-btn" class="secondary small">Sair</button>
+    </header>
+
+    <main id="messages"></main>
+
+    <form id="message-form" class="composer">
+      <label class="attach" title="Enviar foto">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <path fill="currentColor" d="M9 3 7.2 5H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3H9zm3 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+        </svg>
+        <input type="file" id="file-input" accept="image/*" hidden>
+      </label>
+      <input id="message-input" maxlength="2000" autocomplete="off" placeholder="Digite uma mensagem...">
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <div id="lightbox" hidden><img alt="Foto ampliada"></div>
+  <div id="toast" hidden></div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
